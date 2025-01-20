@@ -1,0 +1,32 @@
+name: Git Public Mirror
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  git_mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Private Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: cloud-rel-private
+
+      - name: Checkout Public Repository
+        uses: actions/checkout@v4
+        with:
+          repository: Certora/cloud-rel-public
+          path: cloud-rel-public
+
+      - name: Mirror
+        run: |
+          cd cloud-rel-private
+          .github/workflows/git-mirror.yml ../cloud-rel-public
+
+      - name: Push
+        run: |
+          cd cloud-rel-public
+          git log
