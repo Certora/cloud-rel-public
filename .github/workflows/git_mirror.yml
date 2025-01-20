@@ -3,7 +3,7 @@ name: Git Public Mirror
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   git_mirror:
