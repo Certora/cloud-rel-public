@@ -11,11 +11,12 @@ OLD_DIR="$(pwd)"
 cd "$1" || exit 1
 
 for commit in $REVISIONS; do
-    AUTHOR="$(git --git-dir="$OLD_DIR/.git" log --format='%an' "$commit")"
-    EMAIL="$(git --git-dir="$OLD_DIR/.git" log --format='%ae' "$commit")"
+    AUTHOR="$(git --git-dir="$OLD_DIR/.git" log --format='%an' -n 1 "$commit")"
+    EMAIL="$(git --git-dir="$OLD_DIR/.git" log --format='%ae' -n 1 "$commit")"
+    git config --global user.email "$EMAIL"
+    git config --global user.name "$AUTHOR"
     git --git-dir="$OLD_DIR/.git" format-patch -k -1 --stdout "$commit" |
-        GIT_AUTHOR_EMAIL="$AUTHOR" GIT_AUTHOR_NAME="$EMAIL" git am \
-            --exclude tests_delete --exclude cloud-test-private -3 -k
+        git am --exclude tests_delete --exclude cloud-test-private -3 -k
 
     OLD_MESSAGE="$(git log --format=%B -n 1 HEAD)"
     # Add private hash to the commit message
