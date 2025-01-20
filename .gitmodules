@@ -1,0 +1,4 @@
+[submodule "cloud-test-private"]
+	path = cloud-test-private
+	url = git@github.com:Certora/cloud-test-private.git
+	branch = main
