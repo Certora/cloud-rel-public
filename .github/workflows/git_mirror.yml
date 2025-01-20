@@ -3,7 +3,7 @@ name: Git Public Mirror
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   git_mirror:
@@ -20,6 +20,7 @@ jobs:
         with:
           repository: Certora/cloud-rel-public
           path: cloud-rel-public
+          ssh-key: ${{ secrets.SSH_MIRROR_ACCESS }}
 
       - name: Mirror
         run: |
