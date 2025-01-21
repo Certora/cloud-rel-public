@@ -15,7 +15,7 @@ git clean -fd
 # Create mixed branch, add files, and push
 mixed_branch="${BRANCH_PREFIX}-${DATE}"
 feature_file="feature_file_${DATE}_mix.txt"
-test_file="test_delete/test_file_${DATE}_mix.txt"
+test_file="tests_delete/test_file_${DATE}_mix.txt"
 
 echo "Creating branch: $mixed_branch"
 git checkout -b $mixed_branch
