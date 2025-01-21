@@ -30,4 +30,4 @@ jobs:
       - name: Push
         run: |
           cd cloud-rel-public
-          git log
+          git push
