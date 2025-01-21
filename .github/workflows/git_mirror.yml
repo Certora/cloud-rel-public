@@ -8,6 +8,7 @@ on:
 jobs:
   git_mirror:
     runs-on: ubuntu-latest
+    if: github.repository == 'Certora/cloud-rel-private'
     steps:
       - name: Clone Private Repository
         uses: actions/checkout@v4
