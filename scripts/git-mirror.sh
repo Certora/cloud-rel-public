@@ -20,5 +20,7 @@ for commit in $REVISIONS; do
 
     OLD_MESSAGE="$(git log --format=%B -n 1 HEAD)"
     # Add private hash to the commit message
+    rm -rf tests_delete cloud-test-private
+    git add -A 
     git commit --amend -m "$OLD_MESSAGE" -m "$commit"
 done
