@@ -25,9 +25,8 @@ jobs:
 
       - name: Mirror
         run: |
+          mkdir -p cloud-rel-public/cloud-test-private
           cd cloud-rel-private
-          git ls-files
-          ls cloud-test-private
           ./scripts/git-mirror.sh ../cloud-rel-public
 
       - name: Push
