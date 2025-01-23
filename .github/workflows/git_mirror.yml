@@ -15,7 +15,6 @@ jobs:
         with:
           fetch-depth: 0
           path: cloud-rel-private
-          submodules: true
 
       - name: Checkout Public Repository
         uses: actions/checkout@v4
@@ -27,6 +26,8 @@ jobs:
       - name: Mirror
         run: |
           cd cloud-rel-private
+          git ls-files
+          ls cloud-test-private
           ./scripts/git-mirror.sh ../cloud-rel-public
 
       - name: Push
