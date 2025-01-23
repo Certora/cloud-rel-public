@@ -15,6 +15,7 @@ jobs:
         with:
           fetch-depth: 0
           path: cloud-rel-private
+          submodules: true
 
       - name: Checkout Public Repository
         uses: actions/checkout@v4
